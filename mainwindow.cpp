@@ -119,7 +119,7 @@ bool MainWindow::PlotData(CBTC& BTC)
     plot->yAxis->setLabel("value");
     // set axes ranges, so we see all data:
     plot->xAxis->setRange(BTC.t[0], BTC.t[BTC.n-1]);
-    plot->yAxis->setRange(BTC.minC(), BTC.maxC());
+    plot->yAxis->setRange(BTC.minC()-0.001, BTC.maxC()+0.001);
     plot->replot();
 
 }
