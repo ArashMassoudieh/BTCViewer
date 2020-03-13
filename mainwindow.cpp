@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAdd_Data_File,SIGNAL(triggered()),this, SLOT(On_Add_Data_File()));
     connect(ui->Show_Graph, SIGNAL(clicked()),this, SLOT(On_Show_Data()));
     connect(ui->Add_Graph, SIGNAL(clicked()),this, SLOT(On_Add_Data()));
+    plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 }
 
 MainWindow::~MainWindow()
