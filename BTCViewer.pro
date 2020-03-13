@@ -22,43 +22,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+GIFMod_Path = E:/Gifmod
+
 CONFIG += c++11
 
 INCLUDEPATH += ../qcustomplot/ \
-    ../GIFMod/src/GUI
+    $${GIFMod_Path}/src/GUI
 
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
         ../qcustomplot/qcustomplot.cpp \
-    ../GIFMod/src/GUI/BTC.cpp \
-    ../GIFMod/src/GUI/BTCSet.cpp \
-    ../GIFMod/src/GUI/Distribution.cpp \
-    ../GIFMod/src/GUI/NormalDist.cpp \
-    ../GIFMod/src/GUI/QuickSort.cpp \
-    ../GIFMod/src/GUI/Vector.cpp \
-    ../GIFMod/src/GUI/StringOP.cpp \
-    ../GIFMod/src/GUI/Matrix.cpp \
-    ../GIFMod/src/GUI/Matrix_arma.cpp \
-    ../GIFMod/src/GUI/utility_funcs.cpp \
-    ../GIFMod/src/GUI/Vector_arma.cpp \
-    ../GIFMod/src/GUI/DistributionNUnif.cpp
+    $${GIFMod_Path}/src/GUI/BTC.cpp \
+    $${GIFMod_Path}/src/GUI/BTCSet.cpp \
+    $${GIFMod_Path}/src/GUI/Distribution.cpp \
+    $${GIFMod_Path}/src/GUI/NormalDist.cpp \
+    $${GIFMod_Path}/src/GUI/QuickSort.cpp \
+    $${GIFMod_Path}/src/GUI/Vector.cpp \
+    $${GIFMod_Path}/src/GUI/StringOP.cpp \
+    $${GIFMod_Path}/src/GUI/Matrix.cpp \
+    $${GIFMod_Path}/src/GUI/Matrix_arma.cpp \
+    $${GIFMod_Path}/src/GUI/utility_funcs.cpp \
+    $${GIFMod_Path}/src/GUI/Vector_arma.cpp \
+    $${GIFMod_Path}/src/GUI/DistributionNUnif.cpp
 
 HEADERS += \
         mainwindow.h \
         ../qcustomplot/qcustomplot.h \
-    ../GIFMod/src/GUI/BTC.h \
-    ../GIFMod/src/GUI/BTCSet.h \
-    ../GIFMod/src/GUI/Distribution.h \
-    ../GIFMod/src/GUI/NormalDist.h \
-    ../GIFMod/src/GUI/QuickSort.h \
-    ../GIFMod/src/GUI/Vector.h \
-    ../GIFMod/src/GUI/StringOP.h \
-    ../GIFMod/src/GUI/Matrix.h \
-    ../GIFMod/src/GUI/Matrix_arma.h \
-    ../GIFMod/src/GUI/utility_funcs.h \
-    ../GIFMod/src/GUI/Vector_arma.h \
-    ../GIFMod/src/GUI/DistributionNUnif.h
+    $${GIFMod_Path}/src/GUI/BTC.h \
+    $${GIFMod_Path}/src/GUI/BTCSet.h \
+    $${GIFMod_Path}/src/GUI/Distribution.h \
+    $${GIFMod_Path}/src/GUI/NormalDist.h \
+    $${GIFMod_Path}/src/GUI/QuickSort.h \
+    $${GIFMod_Path}/src/GUI/Vector.h \
+    $${GIFMod_Path}/src/GUI/StringOP.h \
+    $${GIFMod_Path}/src/GUI/Matrix.h \
+    $${GIFMod_Path}/src/GUI/Matrix_arma.h \
+    $${GIFMod_Path}/src/GUI/utility_funcs.h \
+    $${GIFMod_Path}/src/GUI/Vector_arma.h \
+    $${GIFMod_Path}/src/GUI/DistributionNUnif.h
 
 
 FORMS += \
@@ -73,25 +75,26 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 win32 {
 
-    LAPACK_INCLUDE = $$PWD/include
+    LAPACK_INCLUDE = $${GIFMod_Path}/include
+    message($$LAPACK_INCLUDE)
     #64 bits build
     contains(QMAKE_TARGET.arch, x86_64) {
         #debug
         CONFIG(debug, debug|release) {
-            LAPACK_LIB_DIR = $$PWD/libs/lapack-blas_lib_win64/debug
+            LAPACK_LIB_DIR = $${GIFMod_Path}/libs/lapack-blas_lib_win64/debug
             LIBS +=  -L$${LAPACK_LIB_DIR} -llapack_win64_MTd \
                     -lblas_win64_MTd
         }
         #release
         CONFIG(release, debug|release) {
-            LAPACK_LIB_DIR = $$PWD/libs/lapack-blas_lib_win64/release
+            LAPACK_LIB_DIR = $${GIFMod_Path}/libs/lapack-blas_lib_win64/release
             LIBS +=  -L$${LAPACK_LIB_DIR} -llapack_win64_MT \
                     -lblas_win64_MT
         }
     }
 
     INCLUDEPATH += $${LAPACK_INCLUDE}
-
+    message ($$INCLUDEPATH)
     DEFINES += ARMA_USE_LAPACK ARMA_USE_BLAS
 
 }

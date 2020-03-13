@@ -41,10 +41,12 @@ private:
                           QColor("darkRed"), QColor("darkCyan"), QColor("darkMagenta"),
                           QColor("green"), QColor("darkGreen"), QColor("yellow"),
                           QColor("blue")};
+    bool showlegend = true;
 private slots:
     bool On_Add_Data_File();
     bool On_Show_Data();
     bool On_Add_Data();
+    bool On_Legend_Clicked();
 
 };
 
