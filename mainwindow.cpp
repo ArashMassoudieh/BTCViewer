@@ -104,6 +104,15 @@ bool MainWindow::On_Add_Data()
 
 bool MainWindow::PlotData(CBTC& BTC)
 {
+    minx=1e12;
+    maxx=-1e12;
+    miny=1e12;
+    maxy=-1e12;
+    maxx = max(BTC.t[0],maxx);
+    maxy = max(BTC.maxC(),maxy);
+    minx = min(BTC.t[BTC.n-1],minx);
+    miny = min(BTC.minC(),miny);
+
     plot->clearGraphs();
     QVector<double> x, y; // initialize with entries 0..100
     for (int i=0; i<BTC.n; ++i)
@@ -126,6 +135,11 @@ bool MainWindow::PlotData(CBTC& BTC)
 
 bool MainWindow::AddData(CBTC& BTC)
 {
+    maxx = max(BTC.t[0],maxx);
+    maxy = max(BTC.maxC(),maxy);
+    minx = min(BTC.t[BTC.n-1],minx);
+    miny = min(BTC.minC(),miny);
+    qDebug() << maxx << "," << minx << "," << miny << "," << maxy;
     QVector<double> x, y; // initialize with entries 0..100
     for (int i=0; i<BTC.n; ++i)
     {
@@ -135,12 +149,13 @@ bool MainWindow::AddData(CBTC& BTC)
     // create graph and assign data to it:
     plot->addGraph();
     plot->graph(plot->graphCount()-1)->setData(x, y);
+
     // give the axes some labels:
     plot->xAxis->setLabel("t");
     plot->yAxis->setLabel("value");
     // set axes ranges, so we see all data:
-    plot->xAxis->setRange(BTC.t[0], BTC.t[BTC.n-1]);
-    plot->yAxis->setRange(BTC.minC(), BTC.maxC());
+    plot->xAxis->setRange(minx, maxx);
+    plot->yAxis->setRange(miny, maxy);
     plot->replot();
 
 }

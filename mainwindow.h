@@ -32,7 +32,10 @@ private:
     QCustomPlot *plot;
     bool PlotData(CBTC& BTC);
     bool AddData(CBTC& BTC);
-
+    double minx=1e12;
+    double maxx=-1e12;
+    double miny=1e12;
+    double maxy=-1e12;
 private slots:
     bool On_Add_Data_File();
     bool On_Show_Data();
