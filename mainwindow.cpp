@@ -123,6 +123,7 @@ bool MainWindow::PlotData(CBTC& BTC)
     // create graph and assign data to it:
     plot->addGraph();
     plot->graph(0)->setData(x, y);
+    plot->graph(0)->setPen(QPen(colours[plot->graphCount()%10]));
     // give the axes some labels:
     plot->xAxis->setLabel("t");
     plot->yAxis->setLabel("value");
@@ -149,7 +150,7 @@ bool MainWindow::AddData(CBTC& BTC)
     // create graph and assign data to it:
     plot->addGraph();
     plot->graph(plot->graphCount()-1)->setData(x, y);
-
+    plot->graph(plot->graphCount()-1)->setPen(QPen(colours[plot->graphCount()%10]));
     // give the axes some labels:
     plot->xAxis->setLabel("t");
     plot->yAxis->setLabel("value");

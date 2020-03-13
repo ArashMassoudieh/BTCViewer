@@ -36,6 +36,11 @@ private:
     double maxx=-1e12;
     double miny=1e12;
     double maxy=-1e12;
+
+    QVector<QColor> colours = {QColor("cyan"), QColor("magenta"), QColor("red"),
+                          QColor("darkRed"), QColor("darkCyan"), QColor("darkMagenta"),
+                          QColor("green"), QColor("darkGreen"), QColor("yellow"),
+                          QColor("blue")};
 private slots:
     bool On_Add_Data_File();
     bool On_Show_Data();
