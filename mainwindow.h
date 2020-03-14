@@ -42,12 +42,28 @@ private:
                           QColor("green"), QColor("darkGreen"), QColor("yellow"),
                           QColor("blue")};
     bool showlegend = true;
+
+
 private slots:
     bool On_Add_Data_File();
     bool On_Show_Data();
     bool On_Add_Data();
     bool On_Legend_Clicked();
+    void axisLabelDoubleClick(QCPAxis *axis, QCPAxis::SelectablePart part);
+    void legendDoubleClick(QCPLegend *legend, QCPAbstractLegendItem *item);
+    void contextMenuRequest(QPoint pos);
+    void moveLegend();
+    void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
+    void removeSelectedGraph();
+    void removeAllGraphs();
+    void mousePress();
+    void mouseWheel();
+    void selectionChanged();
+    void turnSelectedtoSymbols();
+    void Deselect();
 
 };
+
+
 
 #endif // MAINWINDOW_H
